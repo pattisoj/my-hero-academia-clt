@@ -37,7 +37,7 @@
 
 Call the MHA API in the command line with go!
 
-This project was created as a way for me to learn about golang and at the same time build a command line tool that could call my own [API](https://github.com/pattisoj/my-hero-academia-api). The first couple of commits in this repository will focus on learning about go rather than achieving the final goal. However, this repositories final purpose is to house a working CLT that can be used to call my api!
+This project was created as a way for me to learn about golang and at the same time build a command line tool that could call my own [API](https://github.com/pattisoj/my-hero-academia-api). **The first couple of commits in this repository will focus on learning about go rather than achieving the final goal.** However, this repositories final purpose is to house a working CLT that can be used to call my api!
 
 My first goal is to be able to call the API and return one random character!
 
