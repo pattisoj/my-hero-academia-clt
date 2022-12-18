@@ -2,24 +2,15 @@ package main
 
 import (
 	"fmt"
-	"errors"
-	"math"
 )
 
+type person struct {
+	name string
+	age int
+}
+
 func main() {
-	result, err := sqrt(16)
-
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println(result)
-	}
+	p := person{name: "Josh", age: 23}
+	fmt.Println(p)
 }
 
-func sqrt(x float64) (float64, error) {
-	if x < 0 {
-		return 0, errors.New("Undefined for negative numbers")
-	}
-
-	return math.Sqrt(x), nil
-}
