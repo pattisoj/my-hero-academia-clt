@@ -4,13 +4,12 @@ import (
 	"fmt"
 )
 
-type person struct {
-	name string
-	age int
-}
-
 func main() {
-	p := person{name: "Josh", age: 23}
-	fmt.Println(p)
+	i := 7
+	inc(&i)
+	fmt.Println(i)
 }
 
+func inc(x *int) {
+	*x++
+}
