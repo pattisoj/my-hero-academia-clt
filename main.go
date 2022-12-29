@@ -2,21 +2,21 @@ package main
 
 import (
 	"io/ioutil"
-	"log"
+	"fmt"
 	"net/http"
 )
 
 func main() {
 	resp, err := http.Get("https://myheroacademia-api.onrender.com/characters/5")
 	if err != nil {
-	   log.Fatalln(err)
+	   fmt.Print(err)
 	}
  
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-	   log.Fatalln(err)
+		fmt.Print(err)
 	}
  
 	sb := string(body)
-	log.Printf(sb)
+	fmt.Print(sb)
  }
