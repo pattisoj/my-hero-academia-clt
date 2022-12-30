@@ -7,7 +7,10 @@ import (
 )
 
 func main() {
-	resp, err := http.Get("https://myheroacademia-api.onrender.com/characters/5")
+	id := 5
+	url := fmt.Sprintf("https://myheroacademia-api.onrender.com/characters/%d", id)
+
+	resp, err := http.Get(url)
 	if err != nil {
 	   fmt.Print(err)
 	}
