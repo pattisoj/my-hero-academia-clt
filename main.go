@@ -36,10 +36,14 @@ func main() {
  }
 
  func stringManipulation(stringBody string)[]string{
-	cleanStringOne := strings.ReplaceAll(stringBody, "{", "")
-	cleanStringTwo := strings.ReplaceAll(cleanStringOne, "}", "")
-	cleanStringThree := strings.ReplaceAll(cleanStringTwo, "\"", "")
-	splitString := strings.Split(cleanStringThree, ",")
+	replacer := strings.NewReplacer(
+		"{", "",
+		"}", "",
+		"\"", "",
+	)
+	cleanString := replacer.Replace(stringBody)
+	
+	splitString := strings.Split(cleanString, ",")
 
 	return splitString
  }
