@@ -4,19 +4,20 @@ import (
 	"io/ioutil"
 	"fmt"
 	"net/http"
-	"math/rand"
-	"time"
+	//"math/rand"
+	//"time"
 	"strings"
 )
 
 func main() {
-	min := 1
+	/*min := 1
   	max := 133
 
 	// NOTE: I had to set a seed here to ensure a random number is generated each time
 	rand.Seed(time.Now().UnixNano())
 
-	id := rand.Intn(max - min) + min
+	id := rand.Intn(max - min) + min */
+	id := 1
 	url := fmt.Sprintf("https://myheroacademia-api.onrender.com/characters/%d", id)
 
 	resp, err := http.Get(url)
@@ -30,20 +31,35 @@ func main() {
 	}
  
 	stringBody := string(body)
-	returnString := stringManipulation(stringBody)
-
-	fmt.Print(returnString)
+	
+	fmt.Print(stringManipulation(stringBody, id))
  }
 
- func stringManipulation(stringBody string)[]string{
-	replacer := strings.NewReplacer(
-		"{", "",
-		"}", "",
-		"\"", "",
-	)
-	cleanString := replacer.Replace(stringBody)
-	
-	splitString := strings.Split(cleanString, ",")
+ func stringManipulation(stringBody string, id int)string{
+	if id>45 && id<134 {
+		if id>91 {
 
-	return splitString
+		} else {
+
+		}
+	} else {
+		replacer := strings.NewReplacer(
+			"{", "",
+			"}", "",
+			"\"", "",
+			":", "",
+			"[", "",
+			"]", "",
+			"name", "",
+			"other_names", "",
+            "quirk", "",
+		)
+		cleanString := replacer.Replace(stringBody)
+		splitString := strings.Split(cleanString, ",")
+		output := fmt.Sprintf("You've randomly drawn %s! You may also know them as %s!", splitString[1], splitString[3])
+		
+		return output
+	}
+
+	return ""
  }
