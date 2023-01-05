@@ -4,20 +4,19 @@ import (
 	"io/ioutil"
 	"fmt"
 	"net/http"
-	//"math/rand"
-	//"time"
+	"math/rand"
+	"time"
 	"strings"
 )
 
 func main() {
-	/*min := 1
+	min := 1
   	max := 133
 
 	// NOTE: I had to set a seed here to ensure a random number is generated each time
 	rand.Seed(time.Now().UnixNano())
 
-	id := rand.Intn(max - min) + min */
-	id := 46
+	id := rand.Intn(max - min) + min
 	url := fmt.Sprintf("https://myheroacademia-api.onrender.com/characters/%d", id)
 
 	resp, err := http.Get(url)
