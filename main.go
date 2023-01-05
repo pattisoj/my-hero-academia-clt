@@ -45,16 +45,14 @@ func main() {
 				":", "",
 				"name", "",
 				"hero_", "",
-				"quirk", "",
 			)
 			cleanString := replacer.Replace(stringBody)
 			splitString := strings.Split(cleanString, ",")
 			output := fmt.Sprintf("You've randomly drawn a hero! %s, you may also know them as %s!", splitString[1], splitString[3])
 			
 			return output
-
 		} else {
-
+			
 		}
 	} else {
 		replacer := strings.NewReplacer(
@@ -66,7 +64,6 @@ func main() {
 			"]", "",
 			"name", "",
 			"other_names", "",
-            "quirk", "",
 		)
 		cleanString := replacer.Replace(stringBody)
 		splitString := strings.Split(cleanString, ",")
