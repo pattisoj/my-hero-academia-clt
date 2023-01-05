@@ -17,7 +17,7 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 
 	id := rand.Intn(max - min) + min */
-	id := 92
+	id := 46
 	url := fmt.Sprintf("https://myheroacademia-api.onrender.com/characters/%d", id)
 
 	resp, err := http.Get(url)
@@ -52,7 +52,21 @@ func main() {
 			
 			return output
 		} else {
+			replacer := strings.NewReplacer(
+				"{", "",
+				"}", "",
+				"\"", "",
+				":", "",
+				"[", "",
+				"]", "",
+				"name", "",
+				"other_names", "",
+			)
+			cleanString := replacer.Replace(stringBody)
+			splitString := strings.Split(cleanString, ",")
+			output := fmt.Sprintf("You've randomly drawn a villain! %s, you may also know them as %s!", splitString[1], splitString[3])
 			
+			return output
 		}
 	} else {
 		replacer := strings.NewReplacer(
