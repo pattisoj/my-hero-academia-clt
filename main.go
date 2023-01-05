@@ -30,11 +30,16 @@ func main() {
 	}
  
 	stringBody := string(body)
+	returnString := stringManipulation(stringBody)
+
+	fmt.Print(returnString)
+ }
+
+ func stringManipulation(stringBody string)[]string{
 	cleanStringOne := strings.ReplaceAll(stringBody, "{", "")
 	cleanStringTwo := strings.ReplaceAll(cleanStringOne, "}", "")
 	cleanStringThree := strings.ReplaceAll(cleanStringTwo, "\"", "")
 	splitString := strings.Split(cleanStringThree, ",")
 
-	//Currently able to select specifics from the split array. Not fully formatted however. After this push I am doing some further investigation.
-	fmt.Print("You got ", splitString[1])
+	return splitString
  }
