@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"math/rand"
 	"time"
+	"strings"
 )
 
 func main() {
@@ -28,6 +29,61 @@ func main() {
 		fmt.Print(err)
 	}
  
-	sb := string(body)
-	fmt.Print(sb)
+	stringBody := string(body)
+	
+	fmt.Print(stringManipulation(stringBody, id))
+ }
+
+ func stringManipulation(stringBody string, id int)string{
+	if id>45 && id<134 {
+		if id>91 {
+			replacer := strings.NewReplacer(
+				"{", "",
+				"}", "",
+				"\"", "",
+				":", "",
+				"name", "",
+				"hero_", "",
+			)
+			cleanString := replacer.Replace(stringBody)
+			splitString := strings.Split(cleanString, ",")
+			output := fmt.Sprintf("You've randomly drawn a hero! %s, you may also know them as %s!", splitString[1], splitString[3])
+			
+			return output
+		} else {
+			replacer := strings.NewReplacer(
+				"{", "",
+				"}", "",
+				"\"", "",
+				":", "",
+				"[", "",
+				"]", "",
+				"name", "",
+				"other_names", "",
+			)
+			cleanString := replacer.Replace(stringBody)
+			splitString := strings.Split(cleanString, ",")
+			output := fmt.Sprintf("You've randomly drawn a villain! %s, you may also know them as %s!", splitString[1], splitString[3])
+			
+			return output
+		}
+	} else {
+		replacer := strings.NewReplacer(
+			"{", "",
+			"}", "",
+			"\"", "",
+			":", "",
+			"[", "",
+			"]", "",
+			"name", "",
+			"other_names", "",
+		)
+		cleanString := replacer.Replace(stringBody)
+		splitString := strings.Split(cleanString, ",")
+		output := fmt.Sprintf("You've randomly drawn a student! %s, you may also know them as %s!", splitString[1], splitString[3])
+		
+		return output
+	}
+
+	return ""
  }
